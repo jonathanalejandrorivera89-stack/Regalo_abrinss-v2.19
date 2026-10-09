@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Abriana 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #3d1c34 0%, #1a0c1f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+        }
+
+        /* Partículas flotantes románticas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 182, 193, 0.25);
+            animation: floatUp 20s linear infinite;
+            bottom: -50px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .particle:nth-child(1) { left: 10%; width: 12px; height: 12px; animation-duration: 15s; }
+        .particle:nth-child(2) { left: 30%; width: 22px; height: 22px; animation-duration: 22s; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 50%; width: 10px; height: 10px; animation-duration: 12s; animation-delay: 1s; }
+        .particle:nth-child(4) { left: 70%; width: 25px; height: 25px; animation-duration: 25s; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 90%; width: 16px; height: 16px; animation-duration: 18s; animation-delay: 1.5s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Contenedor Principal Celular */
+        .main-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+        /* Reproductor de Música */
+        .music-player {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .music-player:active {
+            transform: scale(0.95);
+        }
+
+        .music-player span {
+            color: #ffb6c1;
+            font-weight: 500;
+        }
+
+        /* Escenario Central con Perspectiva 3D */
+        .stage-center {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            perspective: 1000px;
+            margin: 5px 0;
+        }
+
+        /* Marco Central 3D Estilo Ramo / Tarjeta */
+        .center-frame {
+            width: 250px;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 182, 193, 0.5);
+            border-radius: 30px;
+            padding: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 105, 180, 0.3);
+            transform: rotateX(5deg) rotateY(-3deg);
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .center-frame:hover {
+            transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+        }
+
+        .profile-img-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .center-frame:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        .center-title {
+            margin-top: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            color: #ffe6eb;
+            text-align: center;
+            letter-spacing: 1.2px;
+            text-shadow: 0 2px 8px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Botones Laterales 3D */
+        .side-buttons-left, .side-buttons-right {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 5;
+        }
+
+        .side-buttons-left {
+            left: 2px;
+        }
+
+        .side-buttons-right {
+            right: 2px;
+        }
+
+        .mini-btn {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.25), rgba(150, 50, 100, 0.25));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 182, 193, 0.5);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), 0 0 10px rgba(255, 182, 193, 0.2);
+        }
+
+        .mini-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.4), rgba(180, 60, 120, 0.4));
+        }
+
+        .mini-btn:active {
+            transform: scale(0.9);
+        }
+
+        .mini-btn span {
+            font-size: 18px;
+        }
+
+        .mini-btn label {
+            font-size: 8px;
+            color: #ffd1dc;
+            margin-top: 2px;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* Modal Interactivo de Comentarios */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: linear-gradient(145deg, rgba(50, 20, 40, 0.95), rgba(25, 10, 25, 0.98));
+            border: 2px solid rgba(255, 182, 193, 0.6);
+            width: 88%;
+            max-width: 330px;
+            padding: 25px 20px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(255, 105, 180, 0.3);
+            transform: scale(0.7) translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-card h3 {
+            color: #ffb6c1;
+            font-size: 19px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .modal-card p {
+            font-size: 14px;
+            color: #fce4ec;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            min-height: 70px;
+        }
+
+        .modal-nav-btns {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 105, 180, 0.35);
+            border: 1px solid rgba(255, 182, 193, 0.6);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            flex: 1;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+            background: rgba(255, 105, 180, 0.6);
+        }
+
+        .close-modal {
+            margin-top: 15px;
+            background: transparent;
+            border: none;
+            color: #bbb;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: underline;
+            letter-spacing: 0.5px;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo Dinámico de Partículas -->
+    <ul class="particles">
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
+
+    <div class="main-container">
+        <!-- Reproductor de música (Mon Laferte) -->
+        <div class="music-player" onclick="toggleMusic()">
+            <span>🎵 Toca para reproducir a Mon Laferte</span>
+            <audio id="bg-music" loop>
+                <source src="cancion.mp3" type="audio/mp3">
+            </audio>
+        </div>
+
+        <!-- Escenario Central -->
+        <div class="stage-center">
+            
+            <!-- 3 Mini Figuras Izquierdas -->
+            <div class="side-buttons-left">
+                <div class="mini-btn" onclick="openComment(0)">
+                    <span>💖</span>
+                    <label>Sonrisa</label>
+                </div>
+                <div class="mini-btn" onclick="openComment(1)">
+                    <span>✨</span>
+                    <label>Magia</label>
+                </div>
+                <div class="mini-btn" onclick="openComment(2)">
+                    <span>🌸</span>
+                    <label>Ternura</label>
+                </div>
+            </div>
+
+            <!-- Marco 3D Central con la Foto de Abriana -->
+            <div class="center-frame">
+                <div class="profile-img-container">
+                    <!-- CAMBIA AQUÍ EL NOMBRE DE TU FOTO (Ej: abriana.jpg) -->
+                    <img src="c:\Users\AMOR\Desktop\WhatsApp Image 2026-09-26 at 4.31.15 PM.jpeg" alt="Abriana Lucero" class="profile-img">
+                </div>
+                <div class="center-title">Abriana Lucero 🤍</div>
+            </div>
+
+            <!-- 3 Mini Figuras Derechas -->
+            <div class="side-buttons-right">
+                <div class="mini-btn" onclick="openComment(3)">
+                    <span>🔥</span>
+                    <label>Pasión</label>
+                </div>
+                <div class="mini-btn" onclick="openComment(4)">
+                    <span>🌹</span>
+                    <label>Única</label>
+                </div>
+                <div class="mini-btn" onclick="openComment(5)">
+                    <span>♾️</span>
+                    <label>Eterno</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-note">Creado con el corazón para ti</div>
+    </div>
+
+    <!-- Modal Interactivo y Navegable -->
+    <div class="modal-overlay" id="commentModal">
+        <div class="modal-card">
+            <h3 id="modalTitle">Título</h3>
+            <p id="modalText">Mensaje...</p>
+            <div class="modal-nav-btns">
+                <button class="nav-btn" onclick="prevComment()">◀ Anterior</button>
+                <button class="nav-btn" onclick="nextComment()">Siguiente ▶</button>
+            </div>
+            <button class="close-modal" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // Mensajes únicos para cada botón lateral
+        const comments = [
+            { title: "Tu hermosa sonrisa", text: "Cada vez que sonríes iluminas mis días más oscuros, eres mi razón favorita para ser feliz." },
+            { title: "Magia pura", text: "Contigo todo se siente diferente, como si la vida tuviera una banda sonora hermosa y llena de paz." },
+            { title: "Inmensa ternura", text: "Tu forma de ser me enamora cada segundo. Gracias por dar tanta dulzura a mi mundo." },
+            { title: "Fuego y pasión", text: "Llevar estos dos meses a tu lado ha sido lo mejor que me ha pasado; eres increíblemente especial." },
+            { title: "Una flor única", text: "Eres como un ramo lleno de vida, la persona más auténtica y maravillosa que conozco." },
+            { title: "Amor eterno", text: "Quiero seguir recorriendo este camino a tu lado, creando momentos inolvidables por mucho tiempo más." }
+        ];
+
+        let currentIndex = 0;
+        const modal = document.getElementById('commentModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalText = document.getElementById('modalText');
+        const music = document.getElementById('bg-music');
+
+        function openComment(index) {
+            currentIndex = index;
+            updateModalContent();
+            modal.classList.add('active');
+        }
+
+        function updateModalContent() {
+            modalTitle.innerText = comments[currentIndex].title;
+            modalText.innerText = comments[currentIndex].text;
+        }
+
+        function nextComment() {
+            currentIndex = (currentIndex + 1) % comments.length;
+            updateModalContent();
+        }
+
+        function prevComment() {
+            currentIndex = (currentIndex - 1 + comments.length) % comments.length;
+            updateModalContent();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Control de reproducción de Mon Laferte
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    document.querySelector('.music-player span').innerText = "🎶 Sonando a Mon Laferte...";
+                }).catch(e => {
+                    console.log("Error al reproducir audio:", e);
+                });
+            } else {
+                music.pause();
+                document.querySelector('.music-player span').innerText = "🎵 Toca para reproducir a Mon Laferte";
+            }
+        }
+    </script>
+</body>
+</html>
